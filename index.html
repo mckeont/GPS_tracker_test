@@ -46,8 +46,10 @@
             data.forEach(function(event) {
                 var lat = event.best_lat;
                 var lon = event.best_lon;
+                var date = new Date(event.received * 1000).toLocaleString(); // Converts Unix timestamp to local time string
+                var status = event.status; // Assume 'status' is part of your data
                 var marker = L.marker([lat, lon]).addTo(map);
-                marker.bindPopup("<b>Device Location</b><br>Latitude: " + lat + "<br>Longitude: " + lon);
+                marker.bindPopup(`<b>Device Location</b><br>Latitude: ${lat}<br>Longitude: ${lon}<br>Date: ${date}<br>Status: ${status}`);
             });
         }
     </script>
